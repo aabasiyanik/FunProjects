@@ -1,3 +1,6 @@
+from calcascii import calculator
+print(calculator)
+
 def add(x, y):
     return x + y
 
