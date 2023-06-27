@@ -19,7 +19,7 @@ while is2:
     isValid = True
     while isValid:
         try:
-            first_num = int(input("What's the first number?: "))
+            first_num = float(input("What's the first number?: "))
 
             is1 = True
             while is1:
@@ -29,7 +29,7 @@ while is2:
                 elif operation in ['+', '-', '*', '/']:
                     is1 = False
 
-            second_num = int(input("\n\nWhat's the next number?: "))
+            second_num = float(input("\n\nWhat's the next number?: "))
             isValid = False
         except ValueError:
             print("Something went wrong, please try again.\n\n\n")
@@ -65,7 +65,7 @@ while is2:
                         print("\nPlease pick a valid operation!")
                     elif operation1 in ['+', '-', '*', '/']:
                         is4 = False
-                second_N = int(input("\n\nWhat's the next number?: "))
+                second_N = float(input("\n\nWhat's the next number?: "))
                 if operation1 == '+':
                     result1 = add(result, second_N)
                 elif operation1 == '-':
