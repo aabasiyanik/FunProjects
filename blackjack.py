@@ -12,8 +12,15 @@ def draw_card():
     return draw
 
 def blackjack():
-    play_or_no = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
-    if play_or_no == 'y':
+    isValid = True
+    while isValid:
+        play_or_no = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
+        if play_or_no.lower() not in ['y', 'n']:
+            print("Please type 'y' or 'n'\n")
+        else:
+            isValid = False
+
+    if play_or_no.lower() == 'y':
         clear()
         pass
     else:
@@ -23,15 +30,22 @@ def blackjack():
     computer = [random.choice(cards), random.choice(cards)]
 
     if sum(user) == 21 and sum(computer) < 21:
-        print(f"\tYour final hand: {user}, final score: {sum(user)}\n\tComputer's final hand: {computer}, final score: {sum(computer)}\nYour went over. You Win")
+        print(f"\tYour final hand: {user}, final score: {sum(user)}\n\tComputer's final hand: {computer}, final score: {sum(computer)}\nYou Win with Blackjack")
         blackjack()
 
     is2 = True
     while is2:
-        print(f"\tYour cards: {user}, current score: {sum(user)}")
-        print(f"\tComputer's first card: {computer[0]}")
-        ans = input("Type 'y' to get another card, type 'n' to pass: ")
-        if ans == 'y':
+        ansValid = True
+        while ansValid:
+            print(f"\tYour cards: {user}, current score: {sum(user)}")
+            print(f"\tComputer's first card: {computer[0]}")
+            ans = input("Type 'y' to get another card, type 'n' to pass: ")
+            if ans.lower() not in ['y', 'n']:
+                print("Please type 'y' or 'n'\n")
+            else:
+                ansValid = False
+
+        if ans.lower() == 'y':
             user.append(draw_card())
             if sum(user) == 21:
                 print(f"\tYour final hand: {user}, final score: {sum(user)}\n\tComputer's final hand: {computer}, final score: {sum(computer)}\nYou Win with Blackjack")
