@@ -98,5 +98,47 @@ public class ticTacToe {
         } while (!placeMark(row, col));
     }
 
-    
+    public static void main(String[] args) {
+        ticTacToe game = new ticTacToe();
+        Scanner scanner = new Scanner(System.in);
+        boolean gameOver = false;
+
+        System.out.println("Welcome to Tic-Tac-Toe!");
+
+        while (!gameOver) {
+            System.out.println("Current board:");
+            game.printBoard();
+            System.out.println("Player " + game.currentPlayerMark + ", enter your move (row [0-2] column [0-2]):");
+
+            int row = scanner.nextInt();
+            int col = scanner.nextInt();
+
+            if (game.placeMark(row, col)) {
+                if (game.checkForWin()) {
+                    System.out.println("Player " + game.currentPlayerMark + " wins!");
+                    gameOver = true;
+                } else if (game.isBoardFull()) {
+                    System.out.println("It's a tie!");
+                    gameOver = true;
+                } else {
+                    game.changePlayer();
+                    game.computerMove();
+
+                    if (game.checkForWin()) {
+                        System.out.println("Player " + game.currentPlayerMark + " wins!");
+                        gameOver = true;
+                    } else if (game.isBoardFull()) {
+                        System.out.println("It's a tie!");
+                        gameOver = true;
+                    } else {
+                        game.changePlayer();
+                    }
+                }
+            } else {
+                System.out.println("Invalid move. Please try again.");
+            }
+        }
+
+        scanner.close();
+    }
 }
