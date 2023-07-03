@@ -34,7 +34,7 @@ resources = {
 # print(COFFEES['espresso']['ingredients']['water'])
 def isItEnough(ingredients):
     for key, value in ingredients.items():
-        if value is not None and resources[key] > value:
+        if value is not None and resources[key] >= value:
             resources[key] -= value
         elif value is not None and resources[key] < value:
             print(f"Sorry there is not enough {key}.")
@@ -69,11 +69,30 @@ def coffeeMachine():
             else:
                 usr_milk = None
             usr_coffee = COFFEES[user_req]['ingredients']['coffee']
-            profit += COFFEES[user_req]['cost']
+            
             isTrue = False
     ingredients = {'water': usr_water, 'milk': usr_milk, 'coffee': usr_coffee}
     isEnough = isItEnough(ingredients=ingredients)
-    
-    
+    if isEnough:
+        print("Please insert coints.")
+        usr_quarter = int(input("How many quarters?: "))
+        usr_dime = int(input("How many dimes?: "))
+        usr_nickel = int(input("How many nickels?: "))
+        usr_penny = int(input("How many pennies?: "))
+
+        insreted_money = usr_penny * penny + usr_nickel * nickel + usr_dime * dime + usr_quarter * quarter
+
+        if insreted_money < COFFEES[user_req]['cost']:
+            print("Sorry that's not enough money. Money refunded.")
+            coffeeMachine()
+        elif insreted_money >= COFFEES[user_req]['cost']:
+            profit += COFFEES[user_req]['cost']
+            if insreted_money > COFFEES[user_req]['cost']:
+                usr_change = round(insreted_money - COFFEES[user_req]['cost'], 2)
+                print(f"Here is ${usr_change}.")
+            print(f"Here is your {user_req} ☕️. Enjoy!")
+            coffeeMachine()
+    elif not isEnough:
+        coffeeMachine()
 
 coffeeMachine()
