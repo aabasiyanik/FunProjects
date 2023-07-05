@@ -9,3 +9,5 @@ for question in question_data:
     
     question_list.append(Question(q_text, q_answer))
 
+quiz = QuizBrain(question_list)
+quiz.next_question()
