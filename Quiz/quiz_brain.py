@@ -10,7 +10,14 @@ class QuizBrain:
         qq_text = self.questions_list[self.question_number].text
         qq_answer = self.questions_list[self.question_number].answer
         self.question_number += 1
-        user_answer = input(f"Q.{self.question_number}: {qq_text} (True/False)?: ")
+        is_Valid = True
+        while is_Valid:
+            user_answer = input(f"Q.{self.question_number}: {qq_text} (True/False)?: ")
+            if user_answer.lower() not in ['true', 'false']:
+                print("Please type in 'True' or 'False'")
+            else:
+                is_Valid = False
+
         self.check_answer(user_answer, qq_answer)
     
     def still_has_questions(self):
