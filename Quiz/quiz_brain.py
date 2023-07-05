@@ -13,4 +13,5 @@ class QuizBrain:
     def still_has_questions(self):
         return self.question_number < len(self.questions_list)
     
-    
+    def check_answer(self, user_answer, correct_answer):
+        pass
