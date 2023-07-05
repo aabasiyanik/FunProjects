@@ -3,4 +3,7 @@ class QuizBrain:
         self.question_number = 0
         self.questions_list = q_list
 
-    def next_question():
+    def next_question(self):
+        qq_text = self.questions_list[self.question_number].text
+        qq_answer = self.questions_list[self.question_number].answer
+        input(f"Q.{self.question_number + 1}: {qq_text} (True/False)?: ")
