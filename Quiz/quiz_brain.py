@@ -23,5 +23,7 @@ class QuizBrain:
         else:
             print("That's wrong.")
             print(f"The correct answer was: {correct_answer}.")
-        print(f"Your current score is: {self.score}/{len(self.question_number)}")
+        print(f"Your current score is: {self.score}/{self.question_number}")
         print("\n")
+        if self.question_number == len(self.questions_list):
+            print(f"You've completed the quiz\nYour final score was: {self.score}/{len(self.questions_list)} | {round((100*self.score)/len(self.questions_list), 2)}%")
