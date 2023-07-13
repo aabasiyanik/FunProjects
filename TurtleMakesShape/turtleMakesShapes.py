@@ -3,8 +3,11 @@ import random
 turtle = Turtle()
 
 colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'aqua']
-
-for i in range(3,5):
+turtle.penup()
+turtle.setx(-50)
+turtle.sety(300)
+turtle.pendown()
+for i in range(3,21):
     random.shuffle(colors)
     for _ in range(i):
         turtle.pencolor(colors[0])
