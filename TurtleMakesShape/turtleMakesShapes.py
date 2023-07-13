@@ -4,7 +4,7 @@ turtle = Turtle()
 
 colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'aqua']
 
-for i in range(3,10):
+for i in range(3,5):
     random.shuffle(colors)
     for _ in range(i):
         turtle.pencolor(colors[0])
