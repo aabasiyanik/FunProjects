@@ -21,7 +21,7 @@ for dot_count in range(1, number_of_dots + 1):
         turtle.forward(50)
         turtle.setheading(180)
         turtle.forward(500)
-        tim.setheading(0)
+        turtle.setheading(0)
 
 screen = turtle_module.Screen()
 screen.exitonclick()
