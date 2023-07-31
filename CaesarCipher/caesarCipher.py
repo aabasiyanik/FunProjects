@@ -4,29 +4,39 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-def encrypt(text, shift):
+# def encrypt(text, shift):
+#     msg = []
+#     for i in text:
+#         msg.append(i)
+#     for i in range(len(msg)):
+#         index = alphabet.index(msg[i])
+#         shifted_index = (index + shift) % len(alphabet)
+#         msg[i] = alphabet[shifted_index]
+#     print("".join(msg))
+
+# def decode(text, shift):
+#     msg = []
+#     for i in text:
+#         msg.append(i)
+#     for i in range(len(msg)):
+#         index = alphabet.index(msg[i])
+#         shifted_index = (index - shift) % len(alphabet)
+#         msg[i] = alphabet[shifted_index]
+#     print("".join(msg))
+
+def start(text, shift):
     msg = []
     for i in text:
         msg.append(i)
     for i in range(len(msg)):
         index = alphabet.index(msg[i])
-        shifted_index = (index + shift) % len(alphabet)
-        msg[i] = alphabet[shifted_index]
-    print("".join(msg))
-
-def decode(text, shift):
-    msg = []
-    for i in text:
-        msg.append(i)
-    for i in range(len(msg)):
-        index = alphabet.index(msg[i])
-        shifted_index = (index - shift) % len(alphabet)
+        if direction == "encode":
+            shifted_index = (index + shift) % len(alphabet)
+        elif direction == "decode":
+            shifted_index = (index - shift) % len(alphabet)
         msg[i] = alphabet[shifted_index]
     print("".join(msg))
 
 
 
-if direction == "encode":
-    encrypt(text = text, shift = shift)
-elif direction == "decode":
-    decode(text = text, shift = shift)
+start(text = text, shift=shift)
